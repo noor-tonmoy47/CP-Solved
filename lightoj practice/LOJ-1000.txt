@@ -1,0 +1,3 @@
+Problem link:
+
+	https://lightoj.com/problem/greetings-from-lightoj
