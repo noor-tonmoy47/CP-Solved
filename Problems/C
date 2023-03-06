@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+
+#define ll long long
+
+#define N 1e6
+using namespace std;
+
+bool isComposite[N];
+
+void sieve(ll n){
+	//isComposite[]
+	for (int i = 2; i * i<= n; ++i)
+	{
+		/* code */
+		if (!isComposite[i])
+		{
+			/* code */
+			for (int j = i *i; j <= n; j += i)
+			{
+				/* code */
+			}
+		}
+	}
+}
+
+
+int main(){
+	
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout << isComposite[0] <<"\n";
+	
+}

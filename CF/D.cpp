@@ -1,38 +1,41 @@
 #include<bits/stdc++.h>
+#define ll long long
 using namespace std;
 
 int main(){
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);	
 	
-	int t;
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+
+	ll t;
 	cin >> t;
+	unordered_map<char, ll> mp;
 	while(t--){
+		ll n,x = 0, ans = 0;
+		cin >> n;
 		string s;
 		cin >> s;
-		for (int i = 1; i < s.size(); ++i){
+		//ll ar[n+10];
+		for (int i = 0; i < n; ++i)
+		{
 			/* code */
-			if(i == 8 and s[i-1] == s[i]){
-				if(s[i-1] == 'G' or s[i-1] == 'B'){
-					s[i] = 'R';
-				}
-				else{
-					s[i] = 'B';
-				}
+			mp[s[i]]++;
+		}
+		for(auto e : mp){
+			if(x == 2){
+				ans--;
+				x = 0;
+			}
+			if(e.second >= 2){
+				x++;
+				ans += 2;
 				continue;
 			}
-			if(s[i-1] == s[i]){
-				if((s[i + 1] == 'G' and s[i] == 'R') or (s[i + 1] == 'R' and s[i] == 'G')){
-					s[i] = 'B';
-				}
-				else if((s[i + 1] == 'G' and s[i] == 'B') or (s[i + 1] == 'G' and s[i] == 'B')){
-					s[i] = 'R';
-				}
-				else if((s[i + 1] == 'B' and s[i] == 'R') or (s[i + 1] == 'R' and s[i] == 'B')){
-					s[i] = 'G';
-				}
+			else{
+				ans += e.second;
 			}
 		}
-		cout << s << "\n"	;
+
+		cout << ans <<"\n";
 	}
 }

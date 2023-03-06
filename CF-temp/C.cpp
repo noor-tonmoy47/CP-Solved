@@ -17,16 +17,6 @@ int main(){
 			/* code */
 			cin >> ara[i];
 		}
-		bool flag = false;
-		for (int i = 1; i < n; ++i)
-		{
-			/* code */
-			if(ara[i] - ara[i-1] > 3){
-				flag = true;
-				break;
-			}
-		}
-		if(flag) cout << "NO" <<"\n";
-		else cout << "YES" <<"\n";
+		
 	}
 }

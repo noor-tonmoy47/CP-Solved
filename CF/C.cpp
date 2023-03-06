@@ -1,43 +1,32 @@
 #include<bits/stdc++.h>
+#define ll long long
 using namespace std;
 
 int main(){
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);	
 	
-	int t;
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+
+	ll t;
 	cin >> t;
 	while(t--){
-		int n, cnt = 0;
+		ll n, ans;
 		cin >> n;
-		vector<int> vN(n, 0);
-		for (int i = 0; i < n; ++i)
-			{
-				/* code */
-				cin >> vN[i];
-			}
-		int m;
-		cin >> m;
-		vector<int> vM(m, 0);	
-		for (int i = 0; i < m; ++i)
+
+		ans = n;
+
+		string s; 
+		cin >> s;
+
+		for (int i = 0; i < n /2 ; ++i)
 		{
 			/* code */
-			cin >> vM[i];
+			if(s[i] == s[n-i - 1]) break;
+			
+			else ans -= 2;
 		}
-		// for(auto e: vM){
-		// 	cout << e <<"\n";
-		// }
-		for (int i = 0; i < m; ++i)
-		{
-			/* code */
-			for (int j = 0; j < n; ++j)
-			{
-				/* code */
-				if(!((vM[i] - vN[j]) & 1)){
-					cnt++;
-				}
-			}
-		}
-		cout << cnt <<"\n";
+
+		cout << ans << "\n";
+
 	}
 }
