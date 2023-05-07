@@ -12,7 +12,8 @@ ll dy[] = {0, 0, 1, -1};
 
 
 bool valid(int x, int y){
-	return (x>= 0 && x<w && y >= 0 && y<h && str[x][y] != '#' && !vis[x][y]);
+	if (x>= 0 && x<h && y >= 0 && y<w && str[x][y] != '#' && !vis[x][y])	return true;
+	return false;
 }
 
 void dfs(int i, int j){
@@ -34,12 +35,12 @@ int main(){
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
 
-	ll t;
+	ll t, tc = 1;
 	cin >> t;
 	while(t--){
-		ll w,h;
+	
 		cin >> w >> h;
-		ll posX, posY;
+		//ll posX, posY;
 		
 		for (int i = 0; i < h; ++i)
 		{
@@ -47,18 +48,10 @@ int main(){
 			
 			cin >> str[i];
 
-			//v.push_back(s);
-			// for (int j = 0; j < w; ++j)
-			// {
-			// 	/* code */
-			// 	if(s[i] == '@') {
-			// 		posX = i;
-			// 		posY = j;
-			// 		break;
-			// 	}
-			// }
 
 		}
+		memset(vis, 0, sizeof(vis));
+		cnt = 0;
 
 		for (int i = 0; i < h; ++i)
 		{
@@ -67,17 +60,17 @@ int main(){
 			{
 				/* code */
 				if(str[i][j] =='@'){
-					posX = i;
-			 		posY = j;
+					
+			 		dfs(i,j);
 			 		break;
 
 				}
 			}
 		}
 
-		cout << posX << " " << posY <<"\n";
+		//cout << posX << " " << posY <<"\n";
 
-		// dfs(posX, posY);
-		// cout << cnt <<"\n";
-	}
+		 //dfs(posX, posY);
+		 cout << "Case " << tc++ << ": " << cnt <<"\n";
+	} 	
 }
