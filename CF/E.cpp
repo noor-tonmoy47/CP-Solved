@@ -1,51 +1,38 @@
-	#include<bits/stdc++.h>
-	#define ll long long
-	using namespace std;
+#include <iostream>
+#include <vector>
 
-	int main(){
-		
-		ios_base::sync_with_stdio(false);
-		cin.tie(NULL);
+using namespace std;
 
-		ll t;
-		cin >> t;
-		while(t--){
-			ll n, sum = 0;
-			cin >> n;
+// Function to find the year in which all signs will occur
+int find_apocalypse_year(int n, const vector<int>& a) {
+    int year = 1;
+    for (int i = 0; i < n; ++i) {
+        year = (year + a[i] - 1) / a[i] * a[i];
+    }
+    return year;
+}
 
-			ll ar[n + 10];
-			for (int i = 0; i < n; ++i)
-			{
-				cin >> ar[i];
-			}
+int main() {
 
-			if(n == 2){
-				if(ar[0] == ar[1] && ar[0] < 0){
-					ar[0] += 2 * abs(ar[0]);
-					ar[1] += 2 * abs(ar[1]);
-				}
-			}
-			else{
-				for (int i = 0; i < n-1; ++i)
-				{
-					/* code */
-					if(ar[i] < 0){
-						
-						if(abs(ar[i]) >= ar[i+1]){
-							ar[i] += 2 * abs(ar[i]);
-							ar[i + 1] -= 2 * ar[i+1];
-						}
+	#ifndef ONLINE_JUDGE 
+        freopen("input.txt", "r", stdin);
+        freopen("output.txt", "w", stdout);
+    #endif
+	
+    int t;
+    cin >> t;
 
-					}
-				}
-			}
-			
+    while (t--) {
+        int n;
+        cin >> n;
 
-			for (int i = 0; i < n; ++i)
-			{
-				/* code */
-				sum += ar[i];
-			}
-			cout << sum <<"\n";
-		}
-	}
+        vector<int> a(n);
+        for (int i = 0; i < n; ++i) {
+            cin >> a[i];
+        }
+
+        cout << find_apocalypse_year(n, a) << endl;
+    }
+
+    return 0;
+}

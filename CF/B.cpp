@@ -1,44 +1,46 @@
 #include<bits/stdc++.h>
 #define ll long long
+#define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 using namespace std;
 
+
 int main(){
-	
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
 
-	ll t;
-	cin >> t;
-	while(t--){
-		ll n;
-		cin >> n;
-		string s;
-		cin >> s;
-		ll x = 0 , y = 0;
-		bool flag = false;
-		for (int i = 0; i < n; ++i)
-		{
-			
-			
+    #ifndef ONLINE_JUDGE 
+        freopen("input.txt", "r", stdin);
+        freopen("output.txt", "w", stdout);
+    #endif
 
-			if(s[i] == 'L') x--;
+    fast_cin();
 
-			else if (s[i] == 'R') x++;
+    vector<int>test;
+    int t;
+    cin >> t;
+    while(t--){
+        int x;
+        cin >> x;
+        test.push_back(x);
+    }
 
-			else if (s[i] == 'U') y++;
+    int moves= 3;
 
-			else y--;
+    sort(test.begin(),test.end());
 
-			if(x == 1 && y == 1) flag = true;
-		}
+    // for(auto e: test){
+    //     cout << e;
+    // }
 
-		if (flag)
-		{
-			cout << "YES" <<"\n";
-		}
-
-		else{
-			cout << "NO" <<"\n";
-		}
-	}
+    
+    while(moves--){
+        test[test.size() - 1] = test[0];
+        cout << "After move: "<< moves <<"\n";
+        cout << test[test.size() - 1] << " " << test[0]<<"\n";
+        sort(test.begin(), test.end());
+    }
+    cout << test[test.size() - 1] - test[0];
+    
+    
+    // for(auto e: test){
+    //     cout << e;
+    // }
 }
